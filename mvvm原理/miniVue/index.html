@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p v-text="msg"></p>
+    <p>{{msg}}</p>
+    <p>{{car.brand}}</p>
+    <p v-html="msg"></p>
+    <input type="text" v-model="msg">
+    <button v-on:click="clickFn">按钮</button>
+  </div>
+  <script src="./src/watcher.js"></script>
+  <script src="./src/observe.js"></script>
+  <script src="./src/compile.js"></script>
+  <script src="./src/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello vue111',
+        car: {
+          brand: '宝马'
+        }
+      },
+      methods: {
+        clickFn() {
+          // 在vue的methods中this应该指向当前实例
+          this.msg = '哈哈'
+          this.car.brand = '奔驰'
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
