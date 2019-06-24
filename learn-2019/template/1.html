@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+  <script type='text/html' id="templateTpl">
+        <tr>
+            <td><%=starname%></td>
+            <td><%=dbz%></td>
+            <td><%=goddess%></td>
+        </tr>
+</script>
+  <table></table>
+  <script>
+    var obj = [
+      {
+        starname: "周杰伦",
+        dbz: "秋刀鱼",
+        goddess: '昆凌'
+      },
+      {
+        starname: "陈小春",
+        dbz: "二锅头",
+        goddess: '李楠'
+      }
+    ]
+    var tables = document.querySelector('table');
+
+    // template('templateTpl',data);
+
+    function template(templateTpl, data) { //在template第一个参数代表的是模板ID ，第二个参数代表的是数据
+      var templateTpl = document.querySelector('#' + templateTpl);
+      var strTpl = templateTpl.innerHTML;
+      console.log(strTpl)
+      var reg = /<%=\s*([^%>]+\S)\s*%>/;
+      var result = reg.exec(strTpl);
+      console.log(result)
+      while (result = reg.exec(strTpl)) {
+        var resultstr = result[0];//<%=name%>
+        var resultWord = result[1];//name
+        strTpl = strTpl.replace(resultstr, data[resultWord]);
+      }
+      return strTpl;
+    }
+    //        template('templateTpl',)
+
+    var nr = ''
+    for (var i = 0; i < obj.length; i++) {
+      nr += template('templateTpl', obj[i]);
+    }
+    tables.innerHTML = nr;
+
+
+
+//        function templateFz(strTpl,obj){
+//            //  // 快速 创建 正则 验证对象
+//            var reg = /<%=\s*([^%>]+\S)\s*%>/;
+//            var  result = reg.exec(strTpl);
+//            while(result = reg.exec(strTpl)){
+//                var resultstr = result[0];//<%=name%>
+//                var resultWord = result[1];//name
+//                strTpl = strTpl.replace(resultstr,obj[resultWord]);
+//            }
+//            return strTpl;
+//        }
+  </script>
+</body>
+
+</html>

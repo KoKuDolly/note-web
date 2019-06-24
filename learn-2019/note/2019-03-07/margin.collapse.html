@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin-collapse</title>
+</head>
+
+<body>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background: pink;
+            /* border: 1px solid pink; */
+            /* overflow: hidden; */
+            /* padding: 1px; */
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: lightblue;
+            margin: 10px;
+        }
+    </style>
+    <div class="box1">
+        <div class="box2">
+
+        </div>
+    </div>
+</body>
+
+</html>

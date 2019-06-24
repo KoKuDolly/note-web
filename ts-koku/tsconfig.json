@@ -1,0 +1,10 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    
+  },
+  "files": ["js類的繼承.ts"],
+  "exclude": [
+    "node_modules"
+  ],
+}

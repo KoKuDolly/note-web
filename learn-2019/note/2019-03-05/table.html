@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Table</title>
+  <style>
+    .clearfix::after {
+      content: '';
+      visibility: hidden;
+      clear: both;
+      height: 0;
+      line-height: 0;
+      display: block;
+    }
+
+    table {
+      border-collapse: collapse;
+      /* border: 1px solid red; */
+    }
+
+    tr:hover {
+      background: #f6f6f6;
+    }
+  </style>
+</head>
+
+<body>
+  <p>从实用角度出发，除了 colspan, rowspan, cellspacing, cellpadding 属性之外的其他属性，推荐用css控制，不推荐用属性控制</p>
+  <p>table/caption/thead,tfoot,tbody/tr/th,td</p>
+  <p>这里主要说说th,td 的属性：colspan(跨列), rowspan(跨行)</p>
+  <table cellpadding="10" cellspacing="0" width="800" summary="text" border="1">
+    <caption>
+      标题
+    </caption>
+    <thead align="left">
+      <tr>
+        <th>表头标题1</th>
+        <th colspan="2">表头标题2</th>
+      </tr>
+      <tr>
+        <td>表头内容1</td>
+        <td>表头内容2</td>
+        <td>表头内容3</td>
+      </tr>
+    </thead>
+    <tfoot align="left">
+      <tr>
+        <th colspan="3" align="center">表足标题1</th>
+      </tr>
+      <tr>
+        <td>表足内容1</td>
+        <td>表足内容2</td>
+        <td>表足内容3</td>
+      </tr>
+    </tfoot>
+    <tbody align="left">
+      <tr>
+        <th rowspan="4">表体标题1</th>
+        <th colspan="2">表体标题2</th>
+      </tr>
+      <tr>
+        <td>表体内容1</td>
+        <td>表体内容1</td>
+      </tr>
+      <tr>
+        <td colspan="2">表体内容1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>summary 摘要，不会再普通浏览器中有视觉效果，屏幕阅读器中可以利用这个属性</p>
+  <p>frame 外边框显示，rules 内边框显示，最好都不要用，而是用css样式</p>
+  <p>除了 cellpadding 和 cellspacing 属性可以用之外，其他的都用css样式替代。align相当于浮动。 而border的大小只影响外边框。</p>
+  <p>align 用于table相当于浮动，用于tbody,thead,tfoot就是正常的，th默认居中，td默认居左</p>
+
+  <p>col和colgroup标签要点：给他们定类，写css样式，只有width样式可用。span作为标签属性使用，表示影响的列的范围。其他属性均不太好用。</p>
+  <style>
+    .colgroup tr {
+      height: 100px;
+    }
+  </style>
+  <table width="100%" border="1" class="colgroup">
+    <caption>colgroup</caption>
+    <colgroup span="2" align="left" valign="top"></colgroup>
+    <colgroup align="right" style="color:#0000FF;" valign="bottom"></colgroup>
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>3476896</td>
+      <td>My first HTML</td>
+      <td>$53</td>
+    </tr>
+  </table>
+  <table width="100%" border="1">
+    <caption>col</caption>
+    <col align="left" />
+    <col align="left" />
+    <col align="right" />
+    <tr>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>3476896</td>
+      <td>My first HTML</td>
+      <td>$53</td>
+    </tr>
+    <tr>
+      <td>2489604</td>
+      <td>My first CSS</td>
+      <td>$47</td>
+    </tr>
+  </table>
+  <p>不用table类标签来写一个table</p>
+  <style>
+    .list-item {
+      display: list-item;
+    }
+  </style>
+  <ul>
+    <div class="list-item">1</div>
+    <div class="list-item">1</div>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Position</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .con {
+      width: 100%;
+      height: 2000px;
+      transform: translateX(5px);
+      /* font-size: 0; */
+      /* letter-spacing: -5px; */
+      /* word-spacing: -5px; */
+    }
+
+    .con div {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      /* font-size: 14px; */
+      letter-spacing: 0;
+      /* word-spacing: 0; */
+      /* margin-right: -5px; */
+    }
+
+    .con p {
+      letter-spacing: 0;
+    }
+  </style>
+  <style>
+    .relative {
+      position: relative;
+      background: red;
+      left: 10px;
+      top: 10px;
+    }
+  </style>
+  <style>
+    .normal {
+      background: black;
+      color: #fff;
+    }
+  </style>
+  <style>
+    .absolute {
+      background: yellow;
+      /* position: absolute; */
+      top: 50px;
+      margin: 10px;
+    }
+
+    .abs1 {
+      left: 10px;
+      /* margin: 10px; */
+    }
+
+    .abs2 {
+      left: 110px;
+      /* margin: 10px; */
+    }
+  </style>
+  <style>
+    .fixed {
+      position: fixed;
+      background: pink;
+      left: 50px;
+      top: 100px;
+    }
+  </style>
+  <style>
+    .sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      background: blue;
+      left: 500px;
+      top: 10px;
+    }
+  </style>
+  <style>
+    table {
+      width: 100ch;
+      height: 100px;
+    }
+
+    .table {
+      display: table;
+      background: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="con">
+    <p>In this demo you can control the position property for the yellow box.</p>
+    <div class="normal">normal-1</div>
+    <div class="relative">relative-2</div>
+    <div class="normal">normal-3</div>
+    <div class="absolute abs1">abso lute-4</div>
+    <div class="normal">normal-5</div>
+    <div class="absolute abs2">abso lute-6</div>
+    <div class="fixed">fixed-7</div>
+    <div class="normal">normal-8</div>
+    <div class="sticky">sticky-9</div>
+    <div class="normal">normal-10</div>
+    <table class="sticky table">
+      <tr>
+        <th>table-11</th>
+      </tr>
+      <tr>
+        <td>position: sticky 对 table 元素的效果与 position: relative 相同。</td>
+        <td>第二行</td>
+      </tr>
+    </table>
+    <!-- <style>
+      .table-row-group {
+        display: table-row-group;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table-cell {
+        display: table-cell;
+      }
+    </style> -->
+    <!-- <div class="table sticky">
+      <div class="table-row-group">
+        <div class="table-row">
+          <div class="table-cell">1</div>
+          <div class="table-cell">2</div>
+        </div>
+      </div>
+    </div> -->
+    <div class="normal">normal-12</div>
+  </div>
+</body>
+
+</html>
