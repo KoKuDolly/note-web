@@ -95,7 +95,170 @@ pre:hover:extend(div pre),
 }
 ```
 
+### Selector Interpolation with Extend
+
+### Scoping / Extend Inside @media
+
+### Duplication Detection
+
+### Use Cases for Extend
+
+#### Classic Use Case
+
+#### Reducing CSS Size
+
+#### Combining Styles / A More Advanced Mixin
+
+## Merge
+
+为了避免任何无意的联接，合并要求在每个联接挂起声明上都有一个显式的`+`或`+_`标志。
+
+### Comma
+
+```less
+.mixin() {
+  box-shadow+: inset 0 0 10px #555;
+}
+.myclass {
+  .mixin();
+  box-shadow+: 0 0 20px black;
+}
+// Outputs
+.myclass {
+  box-shadow: inset 0 0 10px #555, 0 0 20px black;
+}
+```
+
+### Space
+
+```less
+.mixin() {
+  transform+_: scale(2);
+}
+.myclass {
+  .mixin();
+  transform+_: rotate(15deg);
+}
+// Outputs
+.myclass {
+  transform: scale(2) rotate(15deg);
+}
+```
+
 ## Mixins
+
+当前和历史上，mixin调用中的括号都是可选的，但可选括号已被弃用，在将来的版本中将需要使用。
+
+### Not Outputting the Mixin
+
+如果您希望创建一个mixin，但不希望该mixin出现在CSS输出中，请在mixin定义后面加上括号。
+
+```less
+.my-mixin {
+  color: black;
+}
+.my-other-mixin() {
+  background: white;
+}
+.class {
+  .my-mixin();
+  .my-other-mixin();
+}
+// outputs
+.my-mixin {
+  color: black;
+}
+.class {
+  color: black;
+  background: white;
+}
+```
+
+### Selectors in Mixins
+
+### Namespaces
+
+### Guarded Namespaces
+
+### The `!important` keyword
+
+### Parametric Mixins
+
+#### How to pass arguments to mixins
+
+#### Mixins with Multiple Parameters
+
+> **定义多个具有相同名字和不同数量的参数的mixins是合法的。**
+
+```less
+.mixin(@color) {
+  color-1: @color;
+}
+.mixin(@color; @padding: 2) {
+  color-2: @color;
+  padding-2: @padding;
+}
+.mixin(@color; @padding; @margin: 2) {
+  color-3: @color;
+  padding-3: @padding;
+  margin: @margin @margin @margin @margin;
+}
+.some .selector div {
+  .mixin(#008000);
+}
+
+// compiles into:
+.class1 {
+  color: #33acfe;
+  margin: 20px;
+  padding: 20px;
+}
+.class2 {
+  color: #efca44;
+  margin: 10px;
+  padding: 40px;
+}
+```
+
+#### Named Parameters
+
+#### The `@arguments` Variable
+
+#### Advanced Arguments and the `@rest` Variable
+
+### Pattern-matching
+
+### Using Mixins as Functions
+
+> 使用中括号寻找mixins中的指定属性，传 `[]` 意味着获取mixins中最后的属性值
+
+#### Property / value accessors
+
+#### Overriding mixin values
+
+#### Unnamed lookups
+
+#### Unlocking mixins & variables into caller scope
+
+### Recursive Mixins
+
+### Mixin Guards
+
+#### Guard Comparison Operators
+
+#### Guard Logical Operators
+
+#### Type Checking Functions
+
+### Aliasing Mixins
+
+#### Assigning mixin calls to a variable
+
+#### Variable calls
+
+## CSS Guards
+
+## Detached Rulesets
 
 ## Nesting
 

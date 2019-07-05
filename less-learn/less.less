@@ -1,0 +1,9 @@
+#library() {
+  .rules() {
+    background: green;
+  }
+}
+.box {
+  @alias: #library.colors;
+  @alias();   // ERROR: Could not evaluate variable call @alias
+}
