@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      /* box-sizing: content-box; */
+      box-sizing: border-box;
+    }
+    .container-my-two {
+      width: 800px;
+      height: 300px;
+      background: #ccc;
+    }
+
+    .container-my-two .container-my-two__item {
+      width: 180px;
+      height: 0;
+      border-radius: 90px;
+      border: 0 solid transparent;
+      /* 这里困扰了我很久，border 要设置为0，其他方向的边框才不会来捣乱 */
+      border-top-width: 90px;
+      border-bottom-width: 90px;
+      border-top-color: #fff;
+      border-bottom-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-my-two">
+    <div class="container-my-two__item"></div>
+  </div>
+</body>
+</html>
