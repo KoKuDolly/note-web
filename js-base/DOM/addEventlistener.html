@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>addEventListener</title>
+</head>
+<body>
+  <style>
+    .father {
+      width: 300px;
+      height: 100px;
+      border: 1px solid red;
+    }
+    .son {
+      width: 400px;
+      height: 300px;
+      border: 1px solid green;
+    }
+  </style>
+  <div class="father">
+    father
+    <div class="son">
+      son
+    </div>
+  </div>
+  <div>
+    <button id="add-event">添加事件</button>
+    <button id="cancle-btn">取消注册</button>
+  </div>
+  <script>
+    const father = document.querySelector('.father');
+    const son = document.querySelector('.son');
+    const cancleBtn = document.getElementById('cancle-btn');
+    const addEvent = document.getElementById('add-event');
+    const eventObj = {
+      handleSonClick: function(e) {
+        console.log(e, 'son');
+      },
+      handleFatherClick: function(e) {
+        console.log(e, 'father');
+      },
+      handleAddEvent: function() {
+        console.log(this);
+        son.addEventListener('click', eventObj.handleSonClick);
+        father.addEventListener('click', eventObj.handleFatherClick);
+      },
+      handleCancleEvent: function() {
+        son.removeEventListener('click', eventObj.handleSonClick);
+        father.removeEventListener('click', eventObj.handleFatherClick);
+      }
+    }
+
+    // const handleCancleEvent = function() {
+    //   eventObj.handleCancleEvent();
+    // }
+
+    // const handleAddEvent = function() {
+    //   eventObj.handleAddEvent();
+    // }
+
+    // addEvent.addEventListener('click', handleAddEvent);
+    // cancleBtn.addEventListener('click', handleCancleEvent);
+
+    addEvent.addEventListener('click', eventObj.handleAddEvent);
+    cancleBtn.addEventListener('click', eventObj.handleCancleEvent);
+  </script>
+</body>
+</html>
