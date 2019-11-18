@@ -18,10 +18,10 @@
         //     console.log(e);
         //     throttle(download, 3000);
         // })
-        btn.onclick = function(e) {
-            console.log(e, download);
-            throttle(download, 3000)();
-        }
+        btn.onclick = (function(e) {
+            console.log(e, download, this);
+            return throttle(download, 3000);
+        })();
 
         // btn.onclick = throttle(download, 3000);
 
