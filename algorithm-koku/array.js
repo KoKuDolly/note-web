@@ -1,34 +1,46 @@
-// 配置信息
+// 表格配置信息
 const peizhi = [
   {
     key: "one",
     row: 0,
-    col: 0
+    col: 0,
+    colTitle: '列1',
+    rowTitle: '行1'
   },
   {
     key: "two",
     row: 0,
-    col: 1
+    col: 1,
+    colTitle: '列2',
+    rowTitle: '行1'
   },
   {
     key: "three",
     row: 0,
-    col: 2
+    col: 2,
+    colTitle: '列3',
+    rowTitle: '行1'
   },
   {
     key: "four",
     row: 1,
-    col: 0
+    col: 0,
+    colTitle: '列1',
+    rowTitle: '行2'
   },
   {
     key: "five",
     row: 1,
-    col: 1
+    col: 1,
+    colTitle: '列2',
+    rowTitle: '行2'
   },
   {
     key: "six",
     row: 1,
-    col: 2
+    col: 2,
+    colTitle: '列3',
+    rowTitle: '行2'
   }
 ];
 // 二维数组
@@ -36,6 +48,93 @@ const HVArr = [
   ["one", "two", "three"],
   ["four", "five", "six"]
 ];
+// 表格数据
+const backData = {
+  one: {
+    name: 'one',
+    value: '1-1'
+  },
+  two: {
+    name: 'two',
+    value: '1-2'
+  },
+  three: {
+    name: 'three',
+    value: '1-3'
+  },
+  four: {
+    name: 'four',
+    value: '2-1'
+  },
+  five: {
+    name: 'five',
+    value: '2-2'
+  },
+  six: {
+    name: 'six',
+    value: '2-3'
+  }
+}
+/**
+ * @param {title}
+ * @param {key}
+ * @param {children}
+ * @param {render}
+ * @param {colNum}
+ * @param {HVArr} 二维数组
+ * @description 业务平台 根据字段配置信息生成colomns
+ * @description 应该由 配置平台 直接返回相应表格的colomns的数据 还是 业务平台 代码生成呢
+ */
+function generateColumns(peizhi) {
+  let result = []
+  console.log(peizhi)
+
+  const columns = [
+    {
+      title: '',
+      children: [
+        {
+          title: '',
+          key: ''
+        },
+        {
+          title: '',
+          render: () => {}
+        }
+      ]
+    }
+  ]
+  // let colTitles = peizhi.map((v) => {
+  //   return v.colTitle
+  // })
+  // let rowTitles = peizhi.map((v) => {
+  //   return v.rowTitle
+  // })
+  // colTitles = [...new Set(colTitles)]
+  // rowTitles = [...new Set(rowTitles)]
+  // console.log(colTitles, rowTitles)
+  result = peizhi.map(v => {
+    return {
+      key: v.key,
+      title: v.colTitle
+    }
+  })
+  console.log(result)
+  return result
+}
+
+generateColumns(peizhi)
+
+function generateTableData(backData) {
+  return [
+    {
+      one: '',
+      two: '',
+      three: '',
+      four: ''
+    }
+  ]
+}
 /**
  * 
  * @param {*} HVArr 
@@ -56,8 +155,8 @@ function generatePeizhi(HVArr) {
     return result
 }
 
-const peizhi_1 = generatePeizhi(HVArr)
-console.log(peizhi_1)
+// const peizhi_1 = generatePeizhi(HVArr)
+// console.log(peizhi_1)
 
 /**
  *
@@ -77,8 +176,8 @@ function generateHVArr(peizhi) {
   return result
 }
 
-const result = generateHVArr(peizhi)
-console.log(result)
+// const result = generateHVArr(peizhi)
+// console.log(result)
 
 // 按照行，列生成二维数组，按行递增
 /**
