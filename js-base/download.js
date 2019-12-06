@@ -14,12 +14,12 @@
  */
 export function aEleDownload(url, filename, isBlob = false) {
   const aEle = document.createElement('a')
-  aEle.download = filename
+  aEle.download = filename // h5 属性
   aEle.style.display = 'none'
   if (isBlob) {
     let blob = null
     try {
-      blob = new Blob([url], { type: 'application/zip' })
+      blob = new Blob([url], { type: 'application/zip' }) // ie10
     } catch (e) {
       window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder || window.MSBlobBuilder
       if (e.name === 'TypeError' && window.BlobBuilder) {
