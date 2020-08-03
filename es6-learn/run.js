@@ -1,3 +1,9 @@
+/*
+ * @Author: jiajun.qin
+ * @LastEditors: jiajun.qin
+ * @Date: 2020-08-03 22:52:39
+ * @LastEditTime: 2020-08-04 00:43:48
+ */
 const fs = require('fs');
 
 // 方法1：回调地狱法
@@ -11,15 +17,9 @@ const fs = require('fs');
 
 // 方法2：数组法
 const arr = [
-  function(callback) {
-    return fs.readFile('./files/1.txt', 'utf-8', callback);
-  },
-  function(callback) {
-    return fs.readFile('./files/2.txt', 'utf-8', callback);
-  },
-  function(callback) {
-    return fs.readFile('./files/3.txt', 'utf-8', callback);
-  }
+  cb => fs.readFile('./files/1.txt', 'utf-8', cb),
+  cb => fs.readFile('./files/2.txt', 'utf-8', cb),
+  cb => fs.readFile('./files/3.txt', 'utf-8', cb)
 ];
 
 function run (arr) {
@@ -33,7 +33,7 @@ function run (arr) {
     fn(function(err, data) {
       if (err) throw err;
       // arr[i] = data;
-      console.log(preData, data);
+      console.log(data);
       next(++i, data);
     });
   };
@@ -56,7 +56,7 @@ function runs(fn) {
   const g = fn();
   function next(err, data) {
     // 本例子，这里打印四次，第一次忽略
-    console.log(err, data);
+    // console.log(err, data);
     const result = g.next();
     if (result.done) return;
     result.value(next);
