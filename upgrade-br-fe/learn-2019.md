@@ -1,7 +1,0 @@
-MDN
-
-HTTP
-
-HTML
-
-CSS
